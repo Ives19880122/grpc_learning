@@ -3,8 +3,7 @@ package com.ives.sec01;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
-import com.ives.models.PersonOuterClass;
-import com.ives.models.PersonOuterClass.Person;
+import com.ives.models.sec01.PersonOuterClass;
 
 public class SimpleProtoDemo {
     private static final Logger log = LoggerFactory.getLogger(SimpleProtoDemo.class);
