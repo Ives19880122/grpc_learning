@@ -5,6 +5,13 @@
             "type": "java",
             "name": "SimpleProtoDemo",
             "request": "launch",
+            "mainClass": "com.ives.sec03.SimpleProtoDemo",
+            "projectName": "grpc-playground"
+        },
+        {
+            "type": "java",
+            "name": "SimpleProtoDemo",
+            "request": "launch",
             "mainClass": "com.ives.sec02.SimpleProtoDemo",
             "projectName": "grpc-playground"
         },
