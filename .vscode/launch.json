@@ -1,0 +1,34 @@
+
+{  "version": "0.2.0",  
+    "configurations": [
+        {
+            "type": "java",
+            "name": "SimpleProtoDemo",
+            "request": "launch",
+            "mainClass": "com.ives.sec01.SimpleProtoDemo",
+            "projectName": "grpc-playground"
+        },
+        {
+            "type": "java",
+            "name": "Main",
+            "request": "launch",
+            "mainClass": "com.ives.Main",
+            "projectName": "grpc-playground"
+        },
+        {
+            "type": "java",
+            "name": "Debug (Launch)",
+            "request": "launch",
+            "cwd": "${workspaceFolder}/target",
+            "sourcePaths": [
+                "$(workspaceRoot)/src"
+            ],
+            "classPaths": [
+                "",
+                "$(workspaceRoot)/target"
+            ],
+            "mainClass": "${fileBasenameNoExtension}",
+            "args": ""
+        }
+    ]
+}
