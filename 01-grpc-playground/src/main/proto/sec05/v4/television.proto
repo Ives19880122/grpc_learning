@@ -1,20 +1,20 @@
 syntax = "proto3";
 
-package sec05.v3;
+package sec05.v4;
 
 
 option java_multiple_files = true;
-option java_package = "com.ives.models.sec05.v3";
+option java_package = "com.ives.models.sec05.v4";
 
 /*
-remove year/model
+add price info
 */
 message Television{
     string brand = 1;
-    // 刪除要加入標記 避免後續版本誤用
     reserved 2;
     reserved "year", "model";
     Type type = 3;
+    int32 price = 4;
 }
 
 enum Type {
