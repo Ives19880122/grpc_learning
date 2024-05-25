@@ -1,6 +1,6 @@
 package com.ives.common;
 
-import com.ives.sec09.repository.BankService;
+import com.ives.sec09.BankService;
 
 public class Demo {
     

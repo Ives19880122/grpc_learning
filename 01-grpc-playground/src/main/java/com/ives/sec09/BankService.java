@@ -1,6 +1,7 @@
-package com.ives.sec09.repository;
+package com.ives.sec09;
 
 import com.google.common.util.concurrent.Uninterruptibles;
+import com.ives.sec09.repository.AccountRepository;
 import com.ives.sec09.repository.validator.RequestValidator;
 import com.ives.models.sec09.*;
 import io.grpc.Status;
@@ -48,16 +49,27 @@ public class BankService extends BankServiceGrpc.BankServiceImplBase {
     }
 
     private void sendMoney(WithdrawRequest request, StreamObserver<Money> responseObserver) {
-        var accountNumber = request.getAccountNumber();
-        var requestedAmount = request.getAmount();
-        for (int i = 0; i < (requestedAmount / 10); i++) {
-            var money = Money.newBuilder().setAmount(10).build();
-            responseObserver.onNext(money);
-            log.info("money sent {}", money);
-            AccountRepository.deductAmount(accountNumber, 10);
-            Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+        try {            
+            var accountNumber = request.getAccountNumber();
+            var requestedAmount = request.getAmount();
+            for (int i = 0; i < (requestedAmount / 10); i++) {
+    
+                if(i==3){
+                    throw new RuntimeException("oops");
+                }
+    
+                var money = Money.newBuilder().setAmount(10).build();
+                responseObserver.onNext(money);
+                log.info("money sent {}", money);
+                AccountRepository.deductAmount(accountNumber, 10);
+                Uninterruptibles.sleepUninterruptibly(1, TimeUnit.SECONDS);
+            }
+            responseObserver.onCompleted();
+        } catch (Exception e) {
+            responseObserver.onError(
+                Status.INTERNAL.withDescription(e.getMessage()).asRuntimeException()
+            );
         }
-        responseObserver.onCompleted();
     }
 
 }

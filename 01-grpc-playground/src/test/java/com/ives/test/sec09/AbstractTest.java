@@ -5,7 +5,7 @@ import org.junit.jupiter.api.BeforeAll;
 
 import com.ives.common.GrpcServer;
 import com.ives.models.sec09.BankServiceGrpc;
-import com.ives.sec09.repository.BankService;
+import com.ives.sec09.BankService;
 import com.ives.test.common.AbstractChannelTest;
 
 public abstract class AbstractTest extends AbstractChannelTest {
