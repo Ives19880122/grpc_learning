@@ -1,4 +1,4 @@
-package com.ives.test.common;
+package com.ives.common;
 
 import java.util.concurrent.TimeUnit;
 

@@ -1,13 +1,13 @@
-package com.ives.test.sec09;
+package com.ives.sec09;
 
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
 
+import com.ives.common.ResponseObserver;
 import com.ives.models.sec09.Money;
 import com.ives.models.sec09.WithdrawRequest;
-import com.ives.test.common.ResponseObserver;
 
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;

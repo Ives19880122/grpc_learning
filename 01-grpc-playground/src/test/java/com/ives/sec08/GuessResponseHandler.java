@@ -1,4 +1,4 @@
-package com.ives.test.sec08;
+package com.ives.sec08;
 
 import java.util.concurrent.CountDownLatch;
 

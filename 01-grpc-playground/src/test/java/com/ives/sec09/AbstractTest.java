@@ -1,12 +1,11 @@
-package com.ives.test.sec09;
+package com.ives.sec09;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 
 import com.ives.common.GrpcServer;
 import com.ives.models.sec09.BankServiceGrpc;
-import com.ives.sec09.BankService;
-import com.ives.test.common.AbstractChannelTest;
+import com.ives.common.AbstractChannelTest;
 
 public abstract class AbstractTest extends AbstractChannelTest {
 

@@ -49,9 +49,14 @@
 
 - message內屬性的修飾字,表示不一定需要
 
-
 ### 比較版本差異
 
 - proto欄位可以隨意改名,但不要改變型別
 - 不同版本的解析可以依據相同位置相同型別來解析
 - 不存在的型別被當成預設
+
+### meta data
+
+- Headers
+- content-type: application/grpc
+

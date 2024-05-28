@@ -1,17 +1,15 @@
-package com.ives.test.sec08;
+package com.ives.sec08;
 
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.RepeatedTest;
-import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.TestInstance;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import com.ives.common.GrpcServer;
 import com.ives.models.sec08.GuessNumberGrpc;
-import com.ives.sec08.GuessNumberService;
-import com.ives.test.common.AbstractChannelTest;
+import com.ives.common.AbstractChannelTest;
 
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class GuessANumberTest extends AbstractChannelTest{

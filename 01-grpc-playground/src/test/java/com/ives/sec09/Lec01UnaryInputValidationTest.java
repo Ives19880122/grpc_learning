@@ -1,8 +1,9 @@
-package com.ives.test.sec09;
+package com.ives.sec09;
 
+import com.ives.common.ResponseObserver;
 import com.ives.models.sec09.AccountBalance;
 import com.ives.models.sec09.BalanceCheckRequest;
-import com.ives.test.common.ResponseObserver;
+
 import io.grpc.Status;
 import io.grpc.StatusRuntimeException;
 import org.junit.jupiter.api.Assertions;
