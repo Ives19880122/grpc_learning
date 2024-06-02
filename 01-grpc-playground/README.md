@@ -60,3 +60,15 @@
 - Headers
 - content-type: application/grpc
 
+### DeadLine
+
+#### deadline setting
+
+- 可以設定Client端的接受回應時間
+- Context可以檢查目前gRpc是否被取消
+
+#### wait for ready
+
+- 用於Server還沒啟用的等待
+- 此設定可以避免收不到回應時立刻跳錯
+- 也可以在設定deadline避免等待過久
