@@ -44,6 +44,9 @@ public class RequestValidator {
             .setValidationCode(code)
             .build();
         metadata.put(ERROR_MESSAGE_KEY,errorMessage);
+        // 追加metadata描述錯誤
+        var key = Metadata.Key.of("desc", Metadata.ASCII_STRING_MARSHALLER);
+        metadata.put(key,code.toString());
         return metadata;
     }
 
