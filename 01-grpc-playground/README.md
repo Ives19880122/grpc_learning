@@ -111,3 +111,9 @@
 
 - 上下文，如果用這個要記得更新上下文的方式return
 - 驗證userRole
+
+### SSL / TLS
+
+- grpc.keystore.jks
+- grpc.truststore.jks
+- 要用netty channel
