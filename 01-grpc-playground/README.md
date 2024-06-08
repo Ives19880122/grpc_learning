@@ -72,3 +72,42 @@
 - 用於Server還沒啟用的等待
 - 此設定可以避免收不到回應時立刻跳錯
 - 也可以在設定deadline避免等待過久
+
+## Sec12
+
+### gzip
+
+- 幫助壓縮message
+- 也可以自定義Compress演算法,在後端註冊壓縮
+
+### Executor
+
+- 可以自己設定,例如java的虛擬Thread
+
+### Interceptor
+
+- 攔截器,跟spring類似
+- 橫切面
+- client,server都有
+
+#### Client Interceptor
+
+- 可以用ClientInterceptor來設定default的deadline
+- 如果需要Override deadline?
+  - 用三元判斷是否callOptions取得的deadline為空
+  - 來決定使用的deadline是預設攔截器或者使用者請求提供
+
+#### Server Interceptor
+
+- 在啟用時調整設置create server方式
+
+#### MetaData
+
+- API key檢查實作
+- 可以用MetadataUtil來建立攔截器
+  - 例如來驗證token
+
+#### Context
+
+- 上下文，如果用這個要記得更新上下文的方式return
+- 驗證userRole
