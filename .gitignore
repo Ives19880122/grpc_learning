@@ -1,4 +1,5 @@
-*/target
+**/target
 .vscode
 *.out
 .DS_Store
+*.code-workspace
