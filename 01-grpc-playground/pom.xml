@@ -105,11 +105,9 @@
                     <protoSourceRoot>
                         ${basedir}/src/main/proto/
                     </protoSourceRoot>
-                    <clearOutputDirectory>false</clearOutputDirectory>
                 </configuration>
                 <executions>
                     <execution>
-                        <phase>clean</phase>
                         <goals>
                             <goal>compile</goal>
                             <goal>compile-custom</goal>
