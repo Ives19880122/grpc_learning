@@ -6,6 +6,9 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import com.vinsguru.common.Ticker;
+import com.vinsguru.user.StockTradeRequest;
+import com.vinsguru.user.TradeAction;
 import com.vinsguru.user.UserInformationRequest;
 import com.vinsguru.user.UserServiceGrpc;
 
@@ -51,5 +54,49 @@ public class UserServiceTest {
         });
         log.info("異常結果",ex);
         Assertions.assertEquals(Status.Code.NOT_FOUND, ex.getStatus().getCode());
+    }
+
+    @Test
+    public void unknownTickerBuyTest(){
+        var ex = Assertions.assertThrows(StatusRuntimeException.class, ()->{
+            var request = StockTradeRequest.newBuilder()
+                .setAction(TradeAction.BUY)
+                .setTicker(Ticker.UNKNOWN)
+                .build();
+            stub.tradeStock(request);
+        });
+        log.info("異常結果",ex);
+        Assertions.assertEquals(Status.Code.INVALID_ARGUMENT, ex.getStatus().getCode());
+    }
+
+    @Test
+    public void insufficientSharesTest(){
+        var ex = Assertions.assertThrows(StatusRuntimeException.class, ()->{
+            var request = StockTradeRequest.newBuilder()
+                .setAction(TradeAction.SELL)
+                .setTicker(Ticker.AMAZON)
+                .setQuantity(100)
+                .setUserId(1)
+                .build();
+            stub.tradeStock(request);
+        });
+        log.info("異常結果",ex);
+        Assertions.assertEquals(Status.Code.FAILED_PRECONDITION, ex.getStatus().getCode());
+    }
+
+    @Test
+    public void insufficientBalanceTest(){
+        var ex = Assertions.assertThrows(StatusRuntimeException.class, ()->{
+            var request = StockTradeRequest.newBuilder()
+                .setAction(TradeAction.BUY)
+                .setTicker(Ticker.APPLE)
+                .setPrice(10000)
+                .setQuantity(2)
+                .setUserId(1)
+                .build();
+            stub.tradeStock(request);
+        });
+        log.info("異常結果",ex);
+        Assertions.assertEquals(Status.Code.FAILED_PRECONDITION, ex.getStatus().getCode());
     }
 }
