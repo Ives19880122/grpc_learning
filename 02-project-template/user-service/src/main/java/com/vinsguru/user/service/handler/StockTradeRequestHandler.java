@@ -55,7 +55,7 @@ public class StockTradeRequestHandler {
         var user = userRepository.findById(request.getUserId())
             .orElseThrow(()-> new UnknownUserException(request.getUserId()));
         var item = portfolioItemRepository.findByUserIdAndTicker(user.getId(), request.getTicker())
-            .filter(it->it.getQuantity()>request.getQuantity())
+            .filter(it->it.getQuantity()>=request.getQuantity())
             .orElseThrow(()-> new InsufficientSharesException(user.getId()));
             
         // valid request

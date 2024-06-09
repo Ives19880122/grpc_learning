@@ -99,4 +99,34 @@ public class UserServiceTest {
         log.info("異常結果",ex);
         Assertions.assertEquals(Status.Code.FAILED_PRECONDITION, ex.getStatus().getCode());
     }
+
+    @Test
+    public void buySellTest(){
+        // buy
+        var buyRequest = StockTradeRequest.newBuilder()
+        .setAction(TradeAction.BUY)
+        .setTicker(Ticker.APPLE)
+        .setPrice(100)
+        .setQuantity(5)
+        .setUserId(2)
+        .build();
+        var buyResponse = stub.tradeStock(buyRequest);
+        
+        // validate balance
+        Assertions.assertEquals(9500, buyResponse.getBalance());
+
+        // check holding
+        var userRequest = UserInformationRequest.newBuilder().setUserId(2).build();
+        var userResponse = stub.getUserInformation(userRequest);
+        Assertions.assertEquals(1, userResponse.getHoldingsCount());
+        Assertions.assertEquals(Ticker.APPLE, userResponse.getHoldingsList().getFirst().getTicker());
+
+        // sell
+        var sellRequest = buyRequest.toBuilder().setPrice(102).setAction(TradeAction.SELL).build();
+        var sellResponse = stub.tradeStock(sellRequest);
+
+        // validate balance
+        Assertions.assertEquals(10010, sellResponse.getBalance());
+
+    }
 }
