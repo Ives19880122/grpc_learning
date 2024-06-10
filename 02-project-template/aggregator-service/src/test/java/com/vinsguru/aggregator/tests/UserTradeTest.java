@@ -7,6 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.test.web.server.LocalServerPort;
+import org.springframework.test.annotation.DirtiesContext;
 
 import com.vinsguru.aggregator.tests.mockservice.StockMockService;
 import com.vinsguru.aggregator.tests.mockservice.UserMockService;
@@ -18,6 +19,8 @@ import com.vinsguru.user.UserInformation;
 
 import net.devh.boot.grpc.server.service.GrpcService;
 
+
+@DirtiesContext
 @SpringBootTest(properties = {
         "grpc.server.port=-1",
         "grpc.server.in-process-name=integration-test",
